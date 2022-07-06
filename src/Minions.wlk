@@ -1,7 +1,6 @@
 class Minions{
-	
-	var property potencia
-	var property bananas
+	var nombreMinion 
+	var property bananas = 0   //se debe inicializar para cambiar el valor en villano
 	const property armas = []
 	var property color = amarillo
 	
@@ -10,19 +9,29 @@ class Minions{
 		 color.esPeligroso(self)
 	}
 	
-	method agregarArmas(arma){  //agrego armas
-		 armas.add(arma)
+	method agregarArmas(_nombre,_potecia){  //agrego armas
+		 armas.add (new Arma( nombre= _nombre, potencia= _potencia) )
 	}
-	method tomarsueromutante(){
-		color.tomarsuero(self)
+
+	method consumirSueroMutante(){ 
+		color.tomarsuero() 
 	}
 	
 	method niveldeconcentracion(){
-		color.niveldeconcentracion(self)
+		color.niveldeconcentracion()
 	}
-	method alimentar(cantidad){
-		bananas += cantidad
-    }                
+	method comerBanana(cantidad){  //come bananas
+		if (bananas > 0){
+		   		bananas -=1
+		   }
+		   else{
+		   		throw new Exception(message= "No tiene bananas") //Excepcion para que las bananas no sean negativas
+		   }
+		
+    }              
+    method alimentar(cantidad){  // sumo cantidad de bananas
+    	return bananas + cantidad
+    } 
     
 }
 
@@ -30,7 +39,8 @@ class Arma {
 	var property nombre 
 	var property potencia
 }
- object amarillo  {    //minion Amariillo
+
+object amarillo  {    //minion Amariillo
 	
 	
 	method esPeligroso(minion){
@@ -49,7 +59,7 @@ class Arma {
 		
 	}
 	method niveldeconcentracion(minion){
-	 	return (minion.armas().max({arma => arma.potencia()}).potencia()+ minion.banana())  
+	 	return (minion.armas().max({arma => arma.potencia()}).potencia() + minion.banana())  
 	}
 	
 }
