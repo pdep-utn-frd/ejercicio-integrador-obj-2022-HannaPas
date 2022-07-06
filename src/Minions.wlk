@@ -1,14 +1,11 @@
 class Minions{
 	
 	var property potencia
-	var bananas
+	var property bananas
 	const property armas = []
 	var property color = amarillo
 	
-	method nuevoMinion(){
-		bananas = 5
-		armas.add(rayocongelante)
-	}
+	
 	method esPeligroso(){  //determina si es peligroso
 		 color.esPeligroso(self)
 	}
@@ -23,51 +20,57 @@ class Minions{
 	method niveldeconcentracion(){
 		color.niveldeconcentracion(self)
 	}
-/*	method alimentar(){
-		bananas =+
-    } */               //(ERROR)
+	method alimentar(cantidad){
+		bananas += cantidad
+    }                
     
 }
 
-object rayocongelante {
-	const potencia = 10
-	
-	method potencia(){
-		return potencia
-	}
+class Arma {
+	var property nombre 
+	var property potencia
 }
-
  object amarillo  {    //minion Amariillo
-	const property armas = []
-	var bananas
 	
-	method esPeligroso(){
-		return armas.size()>2 
+	
+	method esPeligroso(minion){
+		return minion.armas().size() >2 
 	}
 	
-	method tomarsuero(){  //se transforman en violetas
-		   armas.clear()
-		   bananas= bananas -1
+	method tomarsuero(minion){  //se transforman en violetas
+		   minion.armas().clear()
+		   minion.color(violeta)
+		   if (minion.bananas() > 0){
+		   		minion.bananas(minion.bananas()-1)
+		   }
+		   else{
+		   		throw new Exception(message= "Tiene 0 bananas") //Excepcion para que las bananas no sean negativas
+		   }
 		
 	}
-	method niveldeconcentracion(){
-	 	//return armas.filter{()} + bananas //(FALTARIA LO DE MAXIMA POTENCIA)
+	method niveldeconcentracion(minion){
+	 	return (minion.armas().max({arma => arma.potencia()}).potencia()+ minion.banana())  
 	}
 	
 }
 
 object violeta{    //minion Violeta
-	var concentracion
-	var bananas
-	const property armas = []
+
 	method esPeligroso(){
 		return true 
 	}
-	method niveldeconcentracion(){
-		concentracion= bananas
+	method niveldeconcentracion(minion){
+		return minion.banana()
 	}
 	
-	method tomarsuero(){ 
-		bananas = bananas -1
-	}
+	method tomarsuero(minion){ 
+		minion.color(amarillo)
+		if (minion.bananas() > 0){
+		   		minion.bananas(minion.bananas()-1)
+		   }
+		   else{
+		   		throw new Exception(message= "Tiene 0 bananas") //Excepcion para que las bananas no sean negativas
+		   }
+	 }
+		   
 }
