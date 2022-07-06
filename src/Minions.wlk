@@ -1,8 +1,9 @@
 class Minions{
-	var nombreMinion 
-	var property bananas = 0   //se debe inicializar para cambiar el valor en villano
+	var nombre
+	var  bananas = 0   //se debe inicializar para cambiar el valor en villano
 	const property armas = []
 	var property color = amarillo
+	var property maldades=0
 	
 	
 	method esPeligroso(){  //determina si es peligroso
