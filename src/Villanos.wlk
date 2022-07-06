@@ -7,7 +7,7 @@ class Villano{
 	
 
 	method nuevoMinions(_nombre){
-		minion.add(new Minions(bananas= 5,nombre= _nombre))
+		minion.add (new Minions(bananas= 5, nombreMinion= _nombre))
 		minion.last().agregarArmas("RayoCongelante",10)
 	}
 	
@@ -18,11 +18,11 @@ class Villano{
 	method otorgarArma(_nombre,nombrearma,potencia){
 		_nombre.agregarArmas(nombrearma,potencia)
 	}
-	s
+	
 	method alimentarMinions(_nombre,cantidadAdicional){
 		  _nombre.alimentar(cantidadAdicional) 
 	}
-	method planificar(maldad){    // MALDAD= --- CONGELAR/ROBAR ----  
+	method planificar(maldad){                            //      MALDAD= --- CONGELAR/ROBAR ----  
 		maldad.minionscapacitados(minion)
 	}
 	
@@ -41,8 +41,8 @@ class Congelar  {
 	method cambiarConcentracion(valor){  //porque se puede modificar la concentracion
 		nivel= valor
 	}
-	method minionscapacitados(){ // (nivel) porque el enunciado dice que se puede modificar los 500
-		minionscapaz= minion.filter({minion=>minion.armas().contains("RayoCongelante") and minion.niveldeConcentracion()== nivel})
+	method minionscapacitados(minion){ // (nivel) porque el enunciado dice que se puede modificar los 500
+		minionscapaz= minion.filter({minion1=>minion1.armas().contains("RayoCongelante") and minion.niveldeConcentracion()== nivel})
 	}
 	
 		method maldadRealizada(){

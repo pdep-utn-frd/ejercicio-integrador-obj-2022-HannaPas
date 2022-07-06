@@ -9,8 +9,8 @@ class Minions{
 		 color.esPeligroso(self)
 	}
 	
-	method agregarArmas(_nombre,_potecia){  //agrego armas
-		 armas.add (new Arma( nombre= _nombre, potencia= _potencia) )
+	method agregarArmas(_nombre,_potencia){  //agrego armas
+		 armas.add (new Arma(nombre= _nombre, potencia= _potencia) )
 	}
 
 	method consumirSueroMutante(){ 
